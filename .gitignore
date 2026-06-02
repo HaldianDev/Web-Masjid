@@ -1,0 +1,9 @@
+/vendor
+/node_modules
+.env
+/storage/*.key
+/storage/logs
+/bootstrap/cache
+.DS_Store
+npm-debug.log
+yarn-error.log
