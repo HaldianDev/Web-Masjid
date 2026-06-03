@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 use Pdo\Mysql;
 
 // Resolve Neon database hostname to IPv4 if needed to avoid Vercel IPv6 connection timeouts.
-$dbUrl = env('DB_URL', env('POSTGRES_URL'));
+$dbUrl = env('DB_URL', env('POSTGRES_URL', env('DATABASE_URL')));
 if ($dbUrl) {
     $parsedUrl = parse_url($dbUrl);
     if (isset($parsedUrl['host']) && str_ends_with($parsedUrl['host'], 'neon.tech')) {
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', env('POSTGRES_URL') ? 'pgsql' : 'sqlite'),
+    'default' => env('DB_CONNECTION', (env('POSTGRES_URL') || env('DATABASE_URL')) ? 'pgsql' : 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +124,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL', env('POSTGRES_URL')),
+            'url' => env('DB_URL', env('POSTGRES_URL', env('DATABASE_URL'))),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'laravel'),
