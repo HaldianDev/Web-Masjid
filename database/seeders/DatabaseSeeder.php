@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         // 4. Seed default settings (Masjid Profile)
         Setting::setValue('masjid_name', "As-Sa'adah Desa Belambangan");
         Setting::setValue('masjid_address', 'Jl. Dago No. 123, Coblong, Kota Bandung, Jawa Barat');
-        Setting::setValue('masjid_history', 'Masjid Raya As-Sa'adah Desa Belambangan didirikan pada tahun 1995 di atas tanah wakaf seluas 2.500 meter persegi. Sejak awal pembangunannya, masjid ini telah bertransformasi menjadi pusat peribadatan utama, pembinaan keagamaan, serta motor penggerak kegiatan sosial bagi masyarakat di kawasan Coblong dan sekitarnya.');
+        Setting::setValue('masjid_history', "Masjid Raya As-Sa'adah Desa Belambangan didirikan pada tahun 1995 di atas tanah wakaf seluas 2.500 meter persegi. Sejak awal pembangunannya, masjid ini telah bertransformasi menjadi pusat peribadatan utama, pembinaan keagamaan, serta motor penggerak kegiatan sosial bagi masyarakat di kawasan Coblong dan sekitarnya.");
         Setting::setValue('masjid_vision', 'Menjadi pusat mercusuar peradaban Islam yang ramah, mandiri, unggul dalam pelayanan, serta transparan menyejahterakan umat.');
         Setting::setValue('masjid_mission', "1. Menyelenggarakan kegiatan ibadah fardhu & sunnah yang tertib dan khusyuk.\n2. Mengembangkan pendidikan Al-Quran, kajian keislaman kontemporer, dan kepemudaan.\n3. Mengelola keuangan donasi jamaah secara akuntabel & transparan menggunakan sistem digital.\n4. Merawat aset fisik dan sarana pendukung ibadah demi kenyamanan dan kekhusyukan jamaah.");
         Setting::setValue('masjid_facilities', "Ruang Shalat Utama Full AC, Perpustakaan Mini Islam, Aula Pertemuan Serbaguna, Area Parkir Ber-Kanopi, Ambulans Layanan Umat Gratis, Air Mineral Galon Dingin/Panas Gratis, Sound System Canggih, Kamar Mandi & Area Wudhu Higienis.");
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Kajian mendalam tentang akhlak dan hadits dari kitab Riyadush Shalihin. Terbuka untuk umum, ikhwan dan akhwat.',
             'category' => 'pengajian',
             'event_date' => now()->addDays(2)->toDateString(),
-            'event_time' => '18:00 - 19:30 (Ba\'da Maghrib)',
+            'event_time' => "18:00 - 19:30 (Ba'da Maghrib)",
             'speaker' => 'Ustadz Dr. Abdul Somad',
             'location' => 'Ruang Shalat Utama',
         ]);
@@ -120,12 +120,12 @@ class DatabaseSeeder extends Seeder
             'category' => 'santunan',
             'event_date' => now()->addDays(4)->toDateString(),
             'event_time' => '09:00 - 12:00 WIB',
-            'speaker' => 'Panitia ZIS DKM As-Sa'adah Desa Belambangan',
+            'speaker' => "Panitia ZIS DKM As-Sa'adah Desa Belambangan",
             'location' => 'Aula Serbaguna Masjid',
         ]);
         Activity::create([
             'title' => 'Pelatihan Pengurusan Jenazah (Fardhu Kifayah)',
-            'description' => 'Pelatihan teoretis dan praktis mengenai tata cara memandikan, mengkafani, menshalatkan, hingga memakamkan jenazah secara syar\'i.',
+            'description' => "Pelatihan teoretis dan praktis mengenai tata cara memandikan, mengkafani, menshalatkan, hingga memakamkan jenazah secara syar'i.",
             'category' => 'pelatihan',
             'event_date' => now()->addDays(15)->toDateString(),
             'event_time' => '08:00 - 15:00 WIB',
