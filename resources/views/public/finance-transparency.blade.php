@@ -274,7 +274,7 @@
                                         @forelse($monthlyFinances as $mf)
                                             <tr class="text-slate-300">
                                                 <td class="py-3 px-2 font-bold text-white">
-                                                    {{ Carbon\Carbon::create()->month($mf->month)->isoFormat('MMMM') }} ({{ $mf->year }})
+                                                    {{ \DateTime::createFromFormat('!m', $mf->month)->format('F') }} ({{ $mf->year }})
                                                 </td>
                                                 <td class="py-3 px-2 text-right font-mono text-emerald-400">Rp {{ number_format($mf->total_in, 0, ',', '.') }}</td>
                                                 <td class="py-3 px-2 text-right font-mono text-red-400">Rp {{ number_format($mf->total_out, 0, ',', '.') }}</td>
