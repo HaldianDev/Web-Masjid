@@ -1,10 +1,14 @@
 import Alpine from 'alpinejs';
 import Swal from 'sweetalert2'; // Import SweetAlert2
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 window.Alpine = Alpine;
 window.Swal = Swal; // Make SweetAlert2 globally available if needed
 
 Alpine.start();
+
+// Initialize Vercel Speed Insights
+injectSpeedInsights();
 
 // SweetAlert2 for delete confirmation
 document.addEventListener('DOMContentLoaded', () => {
