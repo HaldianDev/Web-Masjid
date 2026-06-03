@@ -20,7 +20,7 @@
         <!-- Mobile Top Navbar -->
         <header class="md:hidden bg-emerald-900 text-white h-16 px-4 flex items-center justify-between border-b border-amber-500/20 sticky top-0 z-40">
             <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
-                <span class="font-bold text-amber-400 tracking-wide text-sm">{{ App\Models\Setting::getValue('masjid_name', 'DKM Al-Hikmah') }}</span>
+                <span class="font-bold text-amber-400 tracking-wide text-sm">{{ App\Models\Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan") }}</span>
             </a>
             <button @click="mobileSidebarOpen = !mobileSidebarOpen" class="p-2 rounded-lg hover:bg-emerald-800 text-slate-200 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,7 +43,7 @@
                             <span class="text-emerald-950 font-black text-xs">DKM</span>
                         </div>
                         <div>
-                            <span class="font-bold text-amber-400 text-sm block">DKM Al-Hikmah</span>
+                            <span class="font-bold text-amber-400 text-sm block">DKM As-Sa'adah Desa Belambangan</span>
                             <span class="text-[10px] text-slate-400 block -mt-1">Halaman Depan ↗</span>
                         </div>
                     </a>

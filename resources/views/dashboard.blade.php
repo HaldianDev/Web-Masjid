@@ -9,7 +9,7 @@
                     Assalamu'alaikum, {{ Auth::user()->name }}!
                 </h3>
                 <p class="text-sm text-emerald-100 mt-1">
-                    Selamat datang di Panel DKM Al-Hikmah. Gunakan menu sidebar untuk navigasi.
+                    Selamat datang di Panel DKM As-Sa'adah Desa Belambangan. Gunakan menu sidebar untuk navigasi.
                 </p>
             </div>
             <span class="text-5xl hidden sm:block">🕌</span>

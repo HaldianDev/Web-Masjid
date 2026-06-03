@@ -41,7 +41,7 @@
                                         {{ $art->category === 'khotbah' ? 'Khotbah Jumat' : 'Artikel Religi' }}
                                     </span>
                                 </td>
-                                <td class="py-4 px-6 font-medium">{{ $art->user->name ?? 'DKM Al-Hikmah' }}</td>
+                                <td class="py-4 px-6 font-medium">{{ $art->user->name ?? "As-Sa'adah Desa Belambangan" }}</td>
                                 <td class="py-4 px-6 flex items-center justify-center space-x-2">
                                     <a href="{{ route('admin.articles.edit', $art->id) }}" class="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold border border-amber-200 rounded-lg">
                                         Edit

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Artikel & Khotbah - {{ config('app.name', 'Masjid Raya Al-Hikmah') }}</title>
+    <title>Artikel & Khotbah - {{ config('app.name', "As-Sa'adah Desa Belambangan") }}</title>
     
     <!-- Fonts: Google Fonts (Outfit & Amiri for elegant arabic vibes) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,7 +178,7 @@
                         <div class="p-6 pt-0 border-t border-emerald-900/60 bg-emerald-950/40 flex items-center justify-between text-xs text-slate-400">
                             <span>
                                 Ditulis oleh:
-                                <span class="text-white">{{ $art->user->name ?? 'DKM Al-Hikmah' }}</span>
+                                <span class="text-white">{{ $art->user->name ?? "As-Sa'adah Desa Belambangan" }}</span>
                             </span>
                         </div>
 
@@ -195,10 +195,10 @@
     <!-- Footer (Re-using structure from welcome.blade.php) -->
     <footer class="bg-emerald-950 border-t border-amber-500/20 py-12 text-slate-400 text-sm text-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <span class="text-2xl font-bold tracking-tight text-amber-400 block">{{ App\Models\Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah') }}</span>
+            <span class="text-2xl font-bold tracking-tight text-amber-400 block">{{ App\Models\Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan") }}</span>
             <p class="max-w-md mx-auto">{{ App\Models\Setting::getValue('masjid_address', 'Bandung') }}</p>
             <p class="text-xs text-slate-500 pt-4 border-t border-emerald-900/50">
-                &copy; {{ date('Y') }} {{ App\Models\Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah') }}. Hak cipta dilindungi undang-undang.
+                &copy; {{ date('Y') }} {{ App\Models\Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan") }}. Hak cipta dilindungi undang-undang.
             </p>
         </div>
     </footer>

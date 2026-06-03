@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div >
+    <div>
 
         <div class="w-full max-w-md bg-emerald-950/60 border border-emerald-800 rounded-2xl shadow-2xl p-6 sm:p-8">
 

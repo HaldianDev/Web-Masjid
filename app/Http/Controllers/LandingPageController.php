@@ -24,7 +24,7 @@ class LandingPageController extends Controller
     {
         // Fetch Profile Settings
         $profile = [
-            'name' => Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah'),
+            'name' => Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan"),
             'address' => Setting::getValue('masjid_address', 'Bandung'),
             'history' => Setting::getValue('masjid_history'),
             'vision' => Setting::getValue('masjid_vision'),
@@ -74,7 +74,7 @@ class LandingPageController extends Controller
     public function showProfile()
     {
         $profile = [
-            'name' => Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah'),
+            'name' => Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan"),
             'address' => Setting::getValue('masjid_address', 'Bandung'),
             'history' => Setting::getValue('masjid_history'),
             'vision' => Setting::getValue('masjid_vision'),

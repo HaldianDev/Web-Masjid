@@ -8,7 +8,7 @@
                 </svg>
             </div>
             <div class="min-w-0">
-                <span class="text-base sm:text-xl font-bold tracking-tight text-amber-400 block group-hover:text-amber-300 transition-colors truncate">{{ App\Models\Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah') }}</span>
+                <span class="text-base sm:text-xl font-bold tracking-tight text-amber-400 block group-hover:text-amber-300 transition-colors truncate">{{ App\Models\Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan") }}</span>
                 <span class="text-[10px] sm:text-xs text-slate-300 block -mt-1">Pusat Kebajikan & Peradaban Umat</span>
             </div>
         </a>

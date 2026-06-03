@@ -7,11 +7,9 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
@@ -24,7 +22,7 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="text-xl font-bold tracking-tight text-amber-400 block group-hover:text-amber-300 transition-colors">{{ App\Models\Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah') }}</span>
+                        <span class="text-xl font-bold tracking-tight text-amber-400 block group-hover:text-amber-300 transition-colors">{{ App\Models\Setting::getValue('masjid_name', "Masjid Raya As-Sa'adah Desa Belambangan") }}</span>
                         <span class="text-xs text-slate-300 block -mt-1">Panel Administrasi</span>
                     </div>
                 </a>

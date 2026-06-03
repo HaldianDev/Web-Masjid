@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Qurban - {{ config('app.name', 'Masjid Raya Al-Hikmah') }}</title>
+    <title>Qurban - {{ config('app.name', "As-Sa'adah Desa Belambangan") }}</title>
     
     <!-- Fonts: Google Fonts (Outfit & Amiri for elegant arabic vibes) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,7 +148,7 @@
             <div class="text-center mb-12">
                 <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-emerald-800/50 px-4 py-1.5 rounded-full border border-amber-500/10">IBADAH QURBAN</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4">Pendaftaran Qurban Idul Adha {{ date('Y') }}</h2>
-                <p class="text-slate-300 text-sm mt-3 max-w-xl mx-auto">Mari salurkan qurban terbaik Anda bersama DKM Masjid Al-Hikmah secara mudah, terpercaya, dan sesuai ketentuan syariat.</p>
+                <p class="text-slate-300 text-sm mt-3 max-w-xl mx-auto">Mari salurkan qurban terbaik Anda bersama DKM Masjid As-Sa'adah Desa Belambangan secara mudah, terpercaya, dan sesuai ketentuan syariat.</p>
             </div>
 
             <!-- Stats -->
@@ -185,7 +185,7 @@
                         <div class="p-4 bg-emerald-950/80 rounded-2xl border border-amber-500/10 space-y-2">
                             <span class="text-xs text-amber-400 font-bold block uppercase tracking-wider">Rekening Resmi Kas DKM:</span>
                             <span class="text-base font-bold text-white font-mono block">Bank Syariah Indonesia (BSI) - 7720261447</span>
-                            <span class="text-xs text-slate-400 block">Atas Nama: PANITIA QURBAN MASJID RAYA AL-HIKMAH</span>
+                            <span class="text-xs text-slate-400 block">Atas Nama: PANITIA QURBAN MASJID RAYA As-Sa'adah Desa Belambangan</span>
                         </div>
                     </div>
                 </div>
@@ -236,10 +236,10 @@
     <!-- Footer (Re-using structure from welcome.blade.php) -->
     <footer class="bg-emerald-950 border-t border-amber-500/20 py-12 text-slate-400 text-sm text-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <span class="text-2xl font-bold tracking-tight text-amber-400 block">{{ App\Models\Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah') }}</span>
+            <span class="text-2xl font-bold tracking-tight text-amber-400 block">{{ App\Models\Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan") }}</span>
             <p class="max-w-md mx-auto">{{ App\Models\Setting::getValue('masjid_address', 'Bandung') }}</p>
             <p class="text-xs text-slate-500 pt-4 border-t border-emerald-900/50">
-                &copy; {{ date('Y') }} {{ App\Models\Setting::getValue('masjid_name', 'Masjid Raya Al-Hikmah') }}. Hak cipta dilindungi undang-undang.
+                &copy; {{ date('Y') }} {{ App\Models\Setting::getValue('masjid_name', "As-Sa'adah Desa Belambangan") }}. Hak cipta dilindungi undang-undang.
             </p>
         </div>
     </footer>
