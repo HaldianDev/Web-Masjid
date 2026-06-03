@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center px-4 py-10 bg-gradient-to-br from-emerald-950 via-emerald-900 to-green-950">
+    <div >
 
         <div class="w-full max-w-md bg-emerald-950/60 border border-emerald-800 rounded-2xl shadow-2xl p-6 sm:p-8">
 
