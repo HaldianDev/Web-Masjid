@@ -37,7 +37,6 @@
     "DB_HOST": "4gg.h.filess.io",
     "DB_PORT": "3306",
     "DB_DATABASE": "masjid2026",
-    "DB_USERNAME": "masjid2026",
-    "DB_PASSWORD": "masjid2026"
+    "DB_USERNAME": "masjid2026"
   }
 }
