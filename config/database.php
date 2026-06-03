@@ -3,6 +3,44 @@
 use Illuminate\Support\Str;
 use Pdo\Mysql;
 
+// Resolve Neon database hostname to IPv4 if needed to avoid Vercel IPv6 connection timeouts.
+$dbUrl = env('DB_URL', env('POSTGRES_URL'));
+if ($dbUrl) {
+    $parsedUrl = parse_url($dbUrl);
+    if (isset($parsedUrl['host']) && str_ends_with($parsedUrl['host'], 'neon.tech')) {
+        $ips = gethostbynamel($parsedUrl['host']);
+        if ($ips && !empty($ips)) {
+            // Find the first IPv4 address
+            $ipv4 = $ips[0];
+            
+            // Extract endpoint ID from host
+            $hostParts = explode('.', $parsedUrl['host']);
+            $endpointId = $hostParts[0]; // e.g. ep-small-frog-apl9ohj0-pooler
+            
+            // Reconstruct connection URL using IPv4 and passing the endpoint parameter
+            $scheme = $parsedUrl['scheme'] ?? 'postgres';
+            $user = $parsedUrl['user'] ?? '';
+            $pass = $parsedUrl['pass'] ?? '';
+            $port = $parsedUrl['port'] ?? 5432;
+            $path = $parsedUrl['path'] ?? '/neondb';
+            $query = $parsedUrl['query'] ?? '';
+            
+            // Parse existing query params and add endpoint and sslmode
+            parse_str($query, $queryParams);
+            $queryParams['options'] = "endpoint={$endpointId}";
+            $queryParams['sslmode'] = 'require';
+            $newQuery = http_build_query($queryParams);
+            
+            $dbUrl = "{$scheme}://{$user}:{$pass}@{$ipv4}:{$port}{$path}?{$newQuery}";
+            
+            // Put it back in environment for Laravel to parse
+            putenv("DB_URL={$dbUrl}");
+            $_ENV['DB_URL'] = $dbUrl;
+            $_SERVER['DB_URL'] = $dbUrl;
+        }
+    }
+}
+
 return [
 
     /*
