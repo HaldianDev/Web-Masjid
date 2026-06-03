@@ -74,4 +74,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+Route::get('/debug-env', function () {
+    return response()->json(array_keys($_ENV) + array_keys($_SERVER));
+});
+
 require __DIR__.'/auth.php';
