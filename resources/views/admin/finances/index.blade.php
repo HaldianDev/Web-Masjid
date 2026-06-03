@@ -218,7 +218,7 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="py-4 px-6 font-mono font-semibold">{{ $mon->year }}</td>
                                 <td class="py-4 px-6 font-bold text-emerald-700">
-                                    {{ Carbon\Carbon::create()->month($mon->month)->isoFormat('MMMM') }}
+                                    {{ \DateTime::createFromFormat('!m', $mon->month)->format('F') }}
                                 </td>
                                 <td class="py-4 px-6 text-right font-mono text-emerald-600 font-semibold">
                                     Rp {{ number_format($mon->total_in, 0, ',', '.') }}
