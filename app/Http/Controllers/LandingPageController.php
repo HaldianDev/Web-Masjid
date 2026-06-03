@@ -98,29 +98,56 @@ class LandingPageController extends Controller
             ->take(5)
             ->get();
 
-        $weeklyFinances = Finance::selectRaw("
-            YEAR(transaction_date) as year,
-            WEEK(transaction_date, 1) as week,
-            SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
-            SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
-        ")
-        ->groupBy('year', 'week')
-        ->orderBy('year', 'desc')
-        ->orderBy('week', 'desc')
-        ->take(5)
-        ->get();
+        $driver = \Illuminate\Support\Facades\DB::connection()->getDriverName();
+        if ($driver === 'sqlite') {
+            $weeklyFinances = Finance::selectRaw("
+                strftime('%Y', transaction_date) as year,
+                strftime('%W', transaction_date) as week,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'week')
+            ->orderBy('year', 'desc')
+            ->orderBy('week', 'desc')
+            ->take(5)
+            ->get();
 
-        $monthlyFinances = Finance::selectRaw("
-            YEAR(transaction_date) as year,
-            MONTH(transaction_date) as month,
-            SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
-            SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
-        ")
-        ->groupBy('year', 'month')
-        ->orderBy('year', 'desc')
-        ->orderBy('month', 'desc')
-        ->take(5)
-        ->get();
+            $monthlyFinances = Finance::selectRaw("
+                strftime('%Y', transaction_date) as year,
+                strftime('%m', transaction_date) as month,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->take(5)
+            ->get();
+        } else {
+            $weeklyFinances = Finance::selectRaw("
+                YEAR(transaction_date) as year,
+                WEEK(transaction_date, 1) as week,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'week')
+            ->orderBy('year', 'desc')
+            ->orderBy('week', 'desc')
+            ->take(5)
+            ->get();
+
+            $monthlyFinances = Finance::selectRaw("
+                YEAR(transaction_date) as year,
+                MONTH(transaction_date) as month,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->take(5)
+            ->get();
+        }
 
         $zisStats = [
             'total_muzakki_money' => ZisRecord::where('person_type', 'muzakki')->whereNotNull('amount_money')->sum('amount_money'),

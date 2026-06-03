@@ -27,36 +27,70 @@ class FinanceController extends Controller
         $balance = $totalIn - $totalOut;
 
         // Aggregates for weekly, monthly, and yearly reports
-        $weeklyRecs = Finance::selectRaw("
-            YEAR(transaction_date) as year,
-            WEEK(transaction_date, 1) as week,
-            SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
-            SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
-        ")
-        ->groupBy('year', 'week')
-        ->orderBy('year', 'desc')
-        ->orderBy('week', 'desc')
-        ->get();
+        $driver = \Illuminate\Support\Facades\DB::connection()->getDriverName();
+        if ($driver === 'sqlite') {
+            $weeklyRecs = Finance::selectRaw("
+                strftime('%Y', transaction_date) as year,
+                strftime('%W', transaction_date) as week,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'week')
+            ->orderBy('year', 'desc')
+            ->orderBy('week', 'desc')
+            ->get();
 
-        $monthlyRecs = Finance::selectRaw("
-            YEAR(transaction_date) as year,
-            MONTH(transaction_date) as month,
-            SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
-            SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
-        ")
-        ->groupBy('year', 'month')
-        ->orderBy('year', 'desc')
-        ->orderBy('month', 'desc')
-        ->get();
+            $monthlyRecs = Finance::selectRaw("
+                strftime('%Y', transaction_date) as year,
+                strftime('%m', transaction_date) as month,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
 
-        $yearlyRecs = Finance::selectRaw("
-            YEAR(transaction_date) as year,
-            SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
-            SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
-        ")
-        ->groupBy('year')
-        ->orderBy('year', 'desc')
-        ->get();
+            $yearlyRecs = Finance::selectRaw("
+                strftime('%Y', transaction_date) as year,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year')
+            ->orderBy('year', 'desc')
+            ->get();
+        } else {
+            $weeklyRecs = Finance::selectRaw("
+                YEAR(transaction_date) as year,
+                WEEK(transaction_date, 1) as week,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'week')
+            ->orderBy('year', 'desc')
+            ->orderBy('week', 'desc')
+            ->get();
+
+            $monthlyRecs = Finance::selectRaw("
+                YEAR(transaction_date) as year,
+                MONTH(transaction_date) as month,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
+
+            $yearlyRecs = Finance::selectRaw("
+                YEAR(transaction_date) as year,
+                SUM(CASE WHEN type = 'in' THEN amount ELSE 0 END) as total_in,
+                SUM(CASE WHEN type = 'out' THEN amount ELSE 0 END) as total_out
+            ")
+            ->groupBy('year')
+            ->orderBy('year', 'desc')
+            ->get();
+        }
 
         return view('admin.finances.index', compact(
             'finances', 'totalIn', 'totalOut', 'balance', 

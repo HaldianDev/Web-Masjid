@@ -170,8 +170,8 @@
         <div class="flex-1 flex flex-col min-w-0 bg-gray-50">
             <!-- Optional Subheader with title -->
             @isset($header)
-                <header class="bg-white border-b border-gray-200 hidden md:block">
-                    <div class="max-w-7xl mx-auto py-5 px-6 sm:px-8">
+                <header class="bg-white border-b border-gray-200">
+                    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>

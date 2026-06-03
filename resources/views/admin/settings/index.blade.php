@@ -13,31 +13,31 @@
         @endif
 
         <!-- Tab Headers -->
-        <div class="flex border-b border-gray-200 bg-white p-2 rounded-2xl shadow-sm space-x-2">
+        <div class="flex flex-col sm:flex-row border-b border-gray-200 bg-white p-2 rounded-2xl shadow-sm gap-2">
             <button @click="tab = 'umum'" 
                     :class="tab === 'umum' ? 'bg-emerald-700 text-white font-bold' : 'text-gray-600 hover:bg-gray-100'"
-                    class="px-4 py-2.5 rounded-xl transition-all font-semibold">
+                    class="px-4 py-2.5 rounded-xl transition-all font-semibold text-left sm:text-center w-full sm:w-auto">
                 Informasi Umum
             </button>
             <button @click="tab = 'visi_misi'" 
                     :class="tab === 'visi_misi' ? 'bg-emerald-700 text-white font-bold' : 'text-gray-600 hover:bg-gray-100'"
-                    class="px-4 py-2.5 rounded-xl transition-all font-semibold">
+                    class="px-4 py-2.5 rounded-xl transition-all font-semibold text-left sm:text-center w-full sm:w-auto">
                 Visi, Misi & Sejarah
             </button>
             <button @click="tab = 'struktur_organisasi'" 
                     :class="tab === 'struktur_organisasi' ? 'bg-emerald-700 text-white font-bold' : 'text-gray-600 hover:bg-gray-100'"
-                    class="px-4 py-2.5 rounded-xl transition-all font-semibold">
+                    class="px-4 py-2.5 rounded-xl transition-all font-semibold text-left sm:text-center w-full sm:w-auto">
                 Struktur Organisasi (Takmir)
             </button>
             <button @click="tab = 'fasilitas_legalitas'" 
                     :class="tab === 'fasilitas_legalitas' ? 'bg-emerald-700 text-white font-bold' : 'text-gray-600 hover:bg-gray-100'"
-                    class="px-4 py-2.5 rounded-xl transition-all font-semibold">
+                    class="px-4 py-2.5 rounded-xl transition-all font-semibold text-left sm:text-center w-full sm:w-auto">
                 Fasilitas & Legalitas
             </button>
         </div>
 
         <!-- Form settings -->
-        <div class="bg-white border border-gray-200 shadow-sm rounded-2xl p-8">
+        <div class="bg-white border border-gray-200 shadow-sm rounded-2xl p-4 sm:p-8">
             <form action="{{ route('admin.settings.update') }}" method="POST" class="space-y-6">
                 @csrf
 
