@@ -7,3 +7,9 @@
 .DS_Store
 npm-debug.log
 yarn-error.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
